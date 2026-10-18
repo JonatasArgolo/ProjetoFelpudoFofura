@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/cena_01Carnaval.unity
+    guid: 5d79c13fa7e142b438feea4dc87e39d4
+  - enabled: 1
+    path: Assets/Scenes/cena_02Carnaval 1.unity
+    guid: bde0a4afef038a94f8a780c7580cb02e
+  - enabled: 1
+    path: Assets/Scenes/cena_03Carnaval 2.unity
+    guid: c5cf0e9265c9fe04883f5c3074b89d67
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
