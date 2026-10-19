@@ -250,7 +250,7 @@ else if (indoEmbora && !terminou) //Inicia o trajeto final (Uber começa a ir em
 ```
 Assim encerrando toda a história dos personagens!!
 
-Ao final de todo o processo, seu resultado é para ser vizualizado desta forma:
+Ao final de todo o processo, seu resultado é para ser vizualizado desta forma (ou algo parecido):
 
 <p align="center">
   <img src="imagem03exemplo.jpeg" width="700">
