@@ -145,3 +145,8 @@ Para emitir os confetes, usamos uma lógica parecida com a usada para os coraç�
      confetes.Emit(qtdConfetes);
    }
 ```
+Ao final de todo o processo, seu resultado é para ser vizualizado desta forma:
+
+<p align="center">
+  <img src="imagem02exemplo.jpeg" width="700">
+</p>
