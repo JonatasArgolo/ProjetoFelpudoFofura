@@ -68,10 +68,8 @@ Para fazer os personagens pararem, utilizamos do método `Parar();` existente no
 ```
 Ao final de todo o processo, seu resultado é para ser vizualizado desta forma:
 
-![Exemplo da primeira cena](imagem01exemplo.jpeg)
-
 <p align="center">
-  <img src="imagem01exemplo.jpeg" width="400">
+  <img src="imagem01exemplo.jpeg" width="700">
 </p>
 
 Nosso projeto foi desenvolvido na Unity 6 utilizando C# e dividido em três cenas. Na primeira, utilizamos scripts para movimentar dois personagens e detectar a aproximação entre eles, acionando um sistema de partículas em formato de corações. Na segunda, implementamos saltos automáticos utilizando Rigidbody2D e efeitos de confetes com Particle System. Na terceira, programamos o movimento de um veículo e utilizamos Coroutines para controlar os intervalos entre as ações. Por fim, utilizamos o SceneManager para realizar as transições automáticas, criando uma animação contínua com início, desenvolvimento e encerramento.
