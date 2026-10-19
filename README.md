@@ -150,3 +150,108 @@ Ao final de todo o processo, seu resultado é para ser vizualizado desta forma:
 <p align="center">
   <img src="imagem02exemplo.jpeg" width="700">
 </p>
+
+# Terceira Cena
+
+Para finalizar nossa história, Felpudo e Fofura estão voltando para casa, eles estão esperando um uber, o carro vem em direção a eles, da direita a esquerda, para e espera eles embarcarem, e depois vai embora pela esquerda e a história termina com uma tela preta com um texto escrito "FIM".
+
+## MoveUber e TransicaoCena
+
+Para o script do MoveUber, que engloba 90% do código, utilizei  de variáveis para acompanhar a velocidade e posição do sprite do carro, para desabilitar e habilitar os personagens para dar a ideia de que embarcaram no uber, o tempo que ele levaria para os movimentos acontecerem e valores booleanos para verificar se o carro completou seu trajeto
+
+```csharp
+    public float velocidade = 3f;
+    public float posicaoParadaX = 0f;
+
+    public GameObject felpudo;
+    public GameObject forura;
+
+    public float tempoParaEntrar = 2f;
+    public float tempoParaSair = 1f;
+    public float posicaoFinalX = -12f;
+
+    public GameObject telaFinal;
+
+    private bool chegou = false;
+    private bool indoEmbora = false;
+    private bool terminou = false;
+```
+Para toda parte da lógica de movimento da cena, englobei dentro de dois `if();` as condições para seu inicio de trajeto ate a parada para pegar os personagens e para se deslocar até o lado esquerdo e encerrar a história.
+
+```csharp
+if (!chegou)
+        {
+            Vector3 posicao = transform.position;
+
+            posicao.x = Mathf.MoveTowards(
+                posicao.x,
+                posicaoParadaX,
+                velocidade * Time.deltaTime
+            );
+
+            transform.position = posicao;
+
+            if (Mathf.Abs(transform.position.x - posicaoParadaX) < 0.01f) // Calcula a distancia da posição do carro em movimento em relação ao seu destino e verifica se ele será menos que 0.01 como forma de tolerância
+            {
+                chegou = true;
+                StartCoroutine(EntrarNoUber()); //Permite executar a lógica do metodo com pausas definidas dentro dele (tive que pesquisar para saber essa parte)
+            }
+```
+### EntrarNoUber
+
+Esse método é executado quando o carro chega ao destino desejado de parada, ele simula o embarque dos personagens e finaliza o processo para continuar o final do trajeto
+
+```csharp
+IEnumerator EntrarNoUber()
+    {
+        Debug.Log("O Uber chegou!");
+
+        yield return new WaitForSeconds(tempoParaEntrar); // Para o carro
+            // Desativa os personagens para dar a impressão de que embarcaram
+        if (felpudo != null)
+            felpudo.SetActive(false);
+
+        if (forura != null)
+            forura.SetActive(false);
+
+        Debug.Log("Felpudo e Forura entraram no Uber!");
+
+        yield return new WaitForSeconds(tempoParaSair);
+            // finaliza o processo e da continuidade para o proximo metodo
+        indoEmbora = true;
+    }
+```
+Após entrarem no carro, o carro da continuidade ao trajeto com um novo `if();`
+
+```csharp
+else if (indoEmbora && !terminou) //Inicia o trajeto final (Uber começa a ir embora porém n saiu da tela ainda)
+        {
+            Vector3 posicao = transform.position;
+
+            posicao.x = Mathf.MoveTowards(
+                posicao.x,
+                posicaoFinalX,
+                velocidade * Time.deltaTime
+            );
+
+            transform.position = posicao;
+
+            if (Mathf.Abs(transform.position.x - posicaoFinalX) < 0.01f)
+            {
+                terminou = true;
+                indoEmbora = false;
+
+                if (telaFinal != null) // Mostra a tela final com o texto
+                    telaFinal.SetActive(true);
+
+                Debug.Log("Fim da historia!");
+            }
+        }
+```
+Assim encerrando toda a história dos personagens!!
+
+Ao final de todo o processo, seu resultado é para ser vizualizado desta forma:
+
+<p align="center">
+  <img src="imagem03exemplo.jpeg" width="700">
+</p>
